@@ -35,27 +35,22 @@
 <a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span class="octicon octicon-link"></span></a>How it Works</h3>
 <p>dirmon scans the history files that are stored in every session of bash/terminal tty. Given the current directory it is tracking, it sorts through the command line history for any commands associated with the current directory it is tracking. It then notifies the user via popup of any detections.</p>
 
-<h3>
-<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h3>
+<p>dirmon logs bash activity to the hidden files <code>/.dirmon</code> and <code>/.dirmon_origin</code> in the directory you are monitoring. The logs are what the dirmon program uses to compare and detect for anomalies.</p>
 
-<p>Currently dirmon requires a merge of all the history records across different bash sessions, which can be accomplished in three commands: </p>
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation and Usage</h3>
+<p>To install, run <code>install.sh</code> script. If you have errors installing, try the following commands:</p>
 <pre><code>
-  $ export HISTCONTROL=ignoredups:erasedups
-  $ shopt -s histappend
-  $ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
-  </code></pre>
-
-<h3>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
-
-<p>Move <code>dirmon.py</code> to the directory you wish to monitor. After navigating to the directory you want to track then run the command:
-<pre><code>$ python dirmon.py</code></pre>
-<p>If you wish to daemonize dirmon, use the command</p>
-<pre><code>python dirmon.py &</code></pre>
-<p>NOTE: you should disable all "print" commands in the daemon script in the "difference_hunter" module.</p>
-
+  $ chmod +x install.sh
+  $ ./install.sh
 </code></pre>
-
+<p>To use, just run the command <code>dirmon</code> inside the directory you wish to monitor!</p>
+<p>To uninstall, run <code>uninstall.sh</code> script. If you have errors uninstalling, try the following commands:</p>
+<pre><code>
+  $ chmod +x uninstall.sh
+  $ ./uninstall.sh
+</code></pre>
+<p>The uninstall command will clean dirmon from your computer!</p>
 
 <h3>
 <a id="Contribute" class="anchor" href="#contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribute</h3>
